@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:curso_job_finder_app/models/job.dart';
 import 'package:curso_job_finder_app/models/company.dart';
 import 'package:curso_job_finder_app/screens/map.dart';
@@ -7,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../components/job_carousel.dart';
 import '../components/job_list.dart';
+
 
 class MainScreen extends StatelessWidget {
   List<Job> forYouJobs = [
@@ -76,7 +75,7 @@ class MainScreen extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           children: <Widget>[
-            _customAppBar(),
+            _customAppBar(context),
             _textsHeader(context),
             _forYou(context),
             _recent(context),
@@ -87,7 +86,7 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  Widget _customAppBar() {
+  Widget _customAppBar(context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
       child: Row(
@@ -114,8 +113,7 @@ class MainScreen extends StatelessWidget {
                 iconSize: 30.0,
                 icon: SvgPicture.asset('assets/icons/location.svg'),
                 onPressed: () {
-                  Navigator.push(this.context,
-                      MaterialPageRoute(builder: (context) => MapScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MapScreen()));
                 },
               ),
             ],
